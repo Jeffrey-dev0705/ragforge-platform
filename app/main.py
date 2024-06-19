@@ -11,3 +11,7 @@ from app.embeddings import local_embedding
 
 app=FastAPI(title='RAGForge Platform', version='0.1.0')
 
+class DocumentIn(BaseModel):
+    title:str=Field(min_length=1,max_length=300)
+    content:str=Field(min_length=20)
+
