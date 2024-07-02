@@ -15,3 +15,6 @@ class DocumentIn(BaseModel):
     title:str=Field(min_length=1,max_length=300)
     content:str=Field(min_length=20)
 
+@app.on_event('startup')
+def startup(): init_db()
+
