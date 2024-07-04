@@ -18,3 +18,6 @@ class DocumentIn(BaseModel):
 @app.on_event('startup')
 def startup(): init_db()
 
+@app.get('/health')
+def health(): return {'status':'ok'}
+
