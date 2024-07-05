@@ -39,3 +39,7 @@ def search(q:str=Query(min_length=2),limit:int=Query(5,ge=1,le=20)):
           FROM chunks c JOIN documents d ON d.id=c.document_id ORDER BY c.embedding <=> %s LIMIT %s''',(v,v,limit)).fetchall()
     return [{'document_id':r[0],'title':r[1],'chunk_index':r[2],'content':r[3],'distance':float(r[4])} for r in rows]
 
+@app.get('/api/v1/answer')
+def answer(q:str=Query(min_length=2)):
+    hits=search(q,5)
+    return {'question':q,'answer': hits[0]['content'] if hits else 'No relevant context found.','sources':hits}
