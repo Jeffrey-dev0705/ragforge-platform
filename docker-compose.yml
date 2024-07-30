@@ -1,0 +1,11 @@
+services:
+  api:
+    build: .
+    env_file: .env
+    ports: ["8001:8000"]
+    depends_on: [postgres]
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment: {POSTGRES_USER: ragforge, POSTGRES_PASSWORD: ragforge, POSTGRES_DB: ragforge}
+    ports: ["5433:5432"]
+    volumes: ["ragdata:/var/lib/postgresql/data"]
