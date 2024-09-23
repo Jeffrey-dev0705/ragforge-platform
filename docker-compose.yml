@@ -9,4 +9,3 @@ services:
     environment: {POSTGRES_USER: ragforge, POSTGRES_PASSWORD: ragforge, POSTGRES_DB: ragforge}
     ports: ["5433:5432"]
     volumes: ["ragdata:/var/lib/postgresql/data"]
-volumes: {ragdata: {}}
