@@ -20,3 +20,9 @@ flowchart TB
   main --> config[app/config.py]
 ```
 
+## Data model
+
+- `documents`: `id`, `title`, `content`, `created_at`
+- `chunks`: `id`, `document_id`, `chunk_index`, `content`, `embedding vector(64)`
+
+Search uses cosine distance (`<=>`) over `chunks.embedding`. Embeddings are produced by `local_embedding` in `app/embeddings.py`.
