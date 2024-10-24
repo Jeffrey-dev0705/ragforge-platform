@@ -11,6 +11,8 @@ flowchart LR
 
 ## Components
 
+```mermaid
+flowchart TB
   main[app/main.py] --> chunking[app/chunking.py]
   main --> embeddings[app/embeddings.py]
   main --> db[app/db.py]
